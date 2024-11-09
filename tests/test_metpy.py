@@ -2,7 +2,7 @@
 Test xarray's capabilities to understand CF projection information.
 """
 import glob
-from src.dataset_creator import load_metadata, create_dataset
+from ..src.dataset_creator import load_metadata, create_dataset
 import pytest
 
 datasets = [
