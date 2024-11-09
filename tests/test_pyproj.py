@@ -20,7 +20,7 @@ datasets = {
 
 
 @pytest.mark.parametrize("dataset_name, dataset", datasets.items())
-def test_from_cf(dataset):
+def test_from_cf(dataset_name, dataset):
     """
     Test the pasting of each projection that is referenced by at least one variable.
     """
@@ -35,7 +35,7 @@ def test_from_cf(dataset):
 
 
 @pytest.mark.parametrize("dataset_name, dataset", datasets.items())
-def test_from_wkt(dataset):
+def test_from_wkt(dataset_name, dataset):
     """
     Test the pasting of each projection that is referenced by at least one variable.
     """
@@ -51,7 +51,7 @@ def test_from_wkt(dataset):
 
 
 @pytest.mark.parametrize("dataset_name, dataset", datasets.items())
-def test_roundtrip_cf(dataset):
+def test_roundtrip_cf(dataset_name, dataset):
     """
     Test if projection can be created from CF attributes and then converted back to CF attributes.
     """
