@@ -21,8 +21,10 @@ jobs:
         auto-update-conda: false
         auto-activate-base: false
         python-version: '3.12'
+    
+    - name: List environment packages
+      run: conda list
 
     - name: Run tests
       run: |
-        conda list
-        pytest --continue
+        pytest --continue-on-collection-errors
