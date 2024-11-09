@@ -1,6 +1,7 @@
 name: cf_coords_test
 channels:
   - conda-forge
+  - defaults
 dependencies:
   - python=3.12
   - pyproj

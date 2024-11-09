@@ -22,4 +22,5 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest
+        conda activate cf_coords_test
+        pytest --continue
