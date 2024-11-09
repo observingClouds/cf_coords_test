@@ -12,6 +12,7 @@ import pyproj
 import pytest
 
 from dataset_creator import create_dataset, load_metadata
+from dataset_handler import extract_grid_mapping_names
 
 datasets = [
     create_dataset(load_metadata(f)) for f in glob.glob("dataset_definitions/*.json")
@@ -26,7 +27,8 @@ def test_from_cf(dataset):
     projections = set()
     for var in dataset.variables:
         if "grid_mapping" in dataset[var].attrs:
-            projections.add(dataset[var].attrs["grid_mapping"])
+            gm = extract_grid_mapping_names(dataset[var].attrs["grid_mapping"])
+            projections.update(set(gm))
 
     for proj in projections:
         pyproj.CRS.from_cf(dataset[proj].attrs)
@@ -40,10 +42,12 @@ def test_from_wkt(dataset):
     projections = set()
     for var in dataset.variables:
         if "grid_mapping" in dataset[var].attrs:
-            projections.add(dataset[var].attrs["grid_mapping"])
+            gm = extract_grid_mapping_names(dataset[var].attrs["grid_mapping"])
+            projections.update(set(gm))
 
     for proj in projections:
-        pyproj.CRS.from_wkt(dataset[proj].attrs["crs_wkt"])
+        if "crs_wkt" in dataset[proj].attrs:
+            pyproj.CRS.from_wkt(dataset[proj].attrs["crs_wkt"])
 
 
 @pytest.mark.parametrize("dataset", datasets)
@@ -54,7 +58,8 @@ def test_roundtrip_cf(dataset):
     projections = set()
     for var in dataset.variables:
         if "grid_mapping" in dataset[var].attrs:
-            projections.add(dataset[var].attrs["grid_mapping"])
+            gm = extract_grid_mapping_names(dataset[var].attrs["grid_mapping"])
+            projections.update(set(gm))
 
     for proj in projections:
         crs = pyproj.CRS.from_cf(dataset[proj].attrs)
@@ -62,4 +67,4 @@ def test_roundtrip_cf(dataset):
         attrs_gen = crs.to_cf()
         assert (
             attrs_orig == attrs_gen
-        ), f"Failed for new attrs {attrs_gen} do not match \n\n{attrs_orig}"
+        ), f"Attributes missmatch! \n\nNew:\n {attrs_gen} \n\nold:\n{attrs_orig}"

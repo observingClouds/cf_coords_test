@@ -24,6 +24,10 @@ jobs:
     
     - name: List environment packages
       run: conda list
+    
+    - name: Run doctest
+      run: |
+        pytest --doctest-modules src
 
     - name: Run tests
       run: |
