@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 import pytest
+from dataset_creator import load_metadata, create_dataset
 
 datasets = [
     create_dataset(load_metadata(f)) for f in glob.glob("dataset_definitions/*.json")
