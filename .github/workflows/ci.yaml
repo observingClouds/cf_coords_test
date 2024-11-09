@@ -13,12 +13,11 @@ jobs:
     - name: Set up conda
       uses: conda-incubator/setup-miniconda@v3
       with:
-        auto-update-conda: false
-        channels: conda-forge
-        miniforge-variant: Mambaforge
         activate-environment: cf_coords_test
-        python-version: '3.12'
         environment-file: environment.yaml
+        auto-update-conda: false
+        auto-activate-base: false
+        python-version: '3.12'
 
     - name: Run tests
       run: |
