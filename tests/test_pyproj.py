@@ -14,12 +14,12 @@ import pytest
 from dataset_creator import create_dataset, load_metadata
 from dataset_handler import extract_grid_mapping_names
 
-datasets = [
-    create_dataset(load_metadata(f)) for f in glob.glob("dataset_definitions/*.json")
-]
+datasets = {
+    f: create_dataset(load_metadata(f)) for f in glob.glob("dataset_definitions/*.json")
+}
 
 
-@pytest.mark.parametrize("dataset", datasets)
+@pytest.mark.parametrize("dataset_name, dataset", datasets.items())
 def test_from_cf(dataset):
     """
     Test the pasting of each projection that is referenced by at least one variable.
@@ -34,7 +34,7 @@ def test_from_cf(dataset):
         pyproj.CRS.from_cf(dataset[proj].attrs)
 
 
-@pytest.mark.parametrize("dataset", datasets)
+@pytest.mark.parametrize("dataset_name, dataset", datasets.items())
 def test_from_wkt(dataset):
     """
     Test the pasting of each projection that is referenced by at least one variable.
@@ -50,7 +50,7 @@ def test_from_wkt(dataset):
             pyproj.CRS.from_wkt(dataset[proj].attrs["crs_wkt"])
 
 
-@pytest.mark.parametrize("dataset", datasets)
+@pytest.mark.parametrize("dataset_name, dataset", datasets.items())
 def test_roundtrip_cf(dataset):
     """
     Test if projection can be created from CF attributes and then converted back to CF attributes.
