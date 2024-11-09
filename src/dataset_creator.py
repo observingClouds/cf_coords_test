@@ -1,17 +1,21 @@
 """
 Create pseudo dataset based on provided metadata.
 """
+
 import json
+
 import numpy as np
 import xarray as xr
+
 
 def load_metadata(metadata_file):
     """
     Load metadata from JSON file.
     """
-    with open(metadata_file, 'r') as f:
+    with open(metadata_file, "r") as f:
         metadata = json.load(f)
     return metadata
+
 
 def create_dataset(metadata):
     """
