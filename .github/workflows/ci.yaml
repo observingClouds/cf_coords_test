@@ -1,0 +1,25 @@
+name: CI
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up conda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        auto-update-conda: false
+        channels: conda-forge
+        miniforge-variant: Mambaforge
+        activate-environment: cf_coords_test
+        python-version: '3.12'
+        environment-file: environment.yaml
+
+    - name: Run tests
+      run: |
+        pytest

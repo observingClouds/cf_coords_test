@@ -1,0 +1,10 @@
+name: cf_coords_test
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pyproj
+  - numpy
+  - pandas
+  - pytest
+  - xarray

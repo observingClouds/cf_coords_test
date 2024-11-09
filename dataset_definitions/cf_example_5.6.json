@@ -1,0 +1,62 @@
+{
+    "dimensions": {
+        "rlon": 128,
+        "rlat": 64,
+        "lev": 18
+    },
+    "variables": {
+        "T": {
+            "dimensions": ["lev", "rlat", "rlon"],
+            "attributes": {
+                "long_name": "temperature",
+                "units": "K",
+                "coordinates": "lon lat",
+                "grid_mapping": "rotated_pole"
+            }
+        },
+        "rotated_pole": {
+            "attributes": {
+                "grid_mapping_name": "rotated_latitude_longitude",
+                "grid_north_pole_latitude": 32.5,
+                "grid_north_pole_longitude": 170.0
+            }
+        },
+        "rlon": {
+            "dimensions": ["rlon"],
+            "attributes": {
+                "long_name": "longitude in rotated pole grid",
+                "units": "degrees",
+                "standard_name": "grid_longitude"
+            }
+        },
+        "rlat": {
+            "dimensions": ["rlat"],
+            "attributes": {
+                "long_name": "latitude in rotated pole grid",
+                "units": "degrees",
+                "standard_name": "grid_latitude"
+            }
+        },
+        "lev": {
+            "dimensions": ["lev"],
+            "attributes": {
+                "long_name": "pressure level",
+                "units": "hPa"
+            }
+        },
+        "lon": {
+            "dimensions": ["rlat", "rlon"],
+            "attributes": {
+                "long_name": "longitude",
+                "units": "degrees_east"
+            }
+        },
+        "lat": {
+            "dimensions": ["rlat", "rlon"],
+            "attributes": {
+                "long_name": "latitude",
+                "units": "degrees_north"
+            }
+        }
+    }
+}
