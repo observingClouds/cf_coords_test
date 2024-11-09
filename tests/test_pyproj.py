@@ -25,7 +25,8 @@ def test_from_cf(dataset):
             projections.add(dataset[var].attrs["grid_mapping"])
     
     for proj in projections:
-        crs = pyproj.CRS.from_cf(dataset[proj].attrs)
+        pyproj.CRS.from_cf(dataset[proj].attrs)
+
 
 @pytest.mark.parametrize("dataset", datasets)
 def test_from_wkt(dataset):
@@ -38,7 +39,7 @@ def test_from_wkt(dataset):
             projections.add(dataset[var].attrs["grid_mapping"])
     
     for proj in projections:
-        crs = pyproj.CRS.from_wkt(dataset[proj].attrs["crs_wkt"])
+        pyproj.CRS.from_wkt(dataset[proj].attrs["crs_wkt"])
 
 @pytest.mark.parametrize("dataset", datasets)
 def test_roundtrip_cf(dataset):
