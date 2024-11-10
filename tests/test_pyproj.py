@@ -66,5 +66,5 @@ def test_roundtrip_cf(dataset_name, dataset):
         attrs_orig = dataset[proj].attrs
         attrs_gen = crs.to_cf()
         assert (
-            attrs_orig == attrs_gen
+            attrs_gen == attrs_orig
         ), f"Attributes missmatch! \n\nNew:\n {attrs_gen} \n\nold:\n{attrs_orig}"
