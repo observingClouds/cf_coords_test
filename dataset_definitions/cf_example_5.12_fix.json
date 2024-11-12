@@ -1,0 +1,53 @@
+{
+    "dimensions": {
+        "lat": 648,
+        "lon": 648,
+        "y": 18,
+        "x": 36
+    },
+    "variables": {
+        "x": {
+            "dimensions": ["x"],
+            "attributes": {
+                "standard_name": "projection_x_coordinate",
+                "units": "m"
+            }
+        },
+        "y": {
+            "dimensions": ["y"],
+            "attributes": {
+                "standard_name": "projection_y_coordinate",
+                "units": "m"
+            }
+        },
+        "temp": {
+            "dimensions": ["y", "x"],
+            "attributes": {
+                "long_name": "temperature",
+                "units": "K",
+                "coordinates": "lat lon",
+                "grid_mapping": "crs: x y"
+            }
+        },
+        "crs": {
+            "attributes": {
+                "grid_mapping_name": "transverse_mercator",
+                "longitude_of_central_meridian": -2.0,
+                "false_easting": 400000.0,
+                "false_northing": -100000.0,
+                "latitude_of_projection_origin": 49.0,
+                "scale_factor_at_central_meridian": 0.9996012717,
+                "longitude_of_prime_meridian": 0.0,
+                "semi_major_axis": 6377563.396,
+                "inverse_flattening": 299.324964600004,
+                "projected_coordinate_system_name": "OSGB 1936 / British National Grid",
+                "geographic_coordinate_system_name": "OSGB 1936",
+                "horizontal_datum_name": "OSGB_1936",
+                "reference_ellipsoid_name": "Airy 1830",
+                "prime_meridian_name": "Greenwich",
+                "towgs84": [375.0, -111.0, 431.0, 0.0, 0.0, 0.0, 0.0],
+                "crs_wkt": "COMPOUNDCRS[\"OSGB 1936 / British National Grid + ODN\", PROJCRS[\"OSGB 1936 / British National Grid\", BASEGEODCRS[\"OSGB 1936\", DATUM[\"OSGB 1936\", ELLIPSOID[\"Airy 1830\", 6377563.396, 299.3249646, LENGTHUNIT[\"metre\",1.0]]], PRIMEM[\"Greenwich\", 0], UNIT[\"degree\", 0.0174532925199433]], CONVERSION[\"OSGB\", METHOD[\"Transverse Mercator\"], PARAMETER[\"False easting\", 400000, LENGTHUNIT[\"metre\",1.0]], PARAMETER[\"False northing\", -100000, LENGTHUNIT[\"metre\",1.0]], PARAMETER[\"Longitude of natural origin\", -2.0, ANGLEUNIT[\"degree\",0.0174532925199433]], PARAMETER[\"Latitude of natural origin\", 49.0, ANGLEUNIT[\"degree\",0.0174532925199433]], PARAMETER[\"Longitude of false origin\", -7.556, ANGLEUNIT[\"degree\",0.0174532925199433]], PARAMETER[\"Latitude of false origin\", 49.766, ANGLEUNIT[\"degree\",0.0174532925199433]], PARAMETER[\"Scale factor at natural origin\", 0.9996012717, SCALEUNIT[\"Unity\",1.0]]], CS[Cartesian, 2], AXIS[\"easting (X)\",east], AXIS[\"northing (Y)\",north], LENGTHUNIT[\"metre\",1.0], ID[\"EPSG\",27700]], VERTCRS[\"Newlyn\", VDATUM[\"Ordnance Datum Newlyn\"], CS[vertical,1], AXIS[\"gravity-related height (H)\",up], LENGTHUNIT[\"metre\",1.0], ID[\"EPSG\",5701]]]"
+            }
+        }
+    }
+}
